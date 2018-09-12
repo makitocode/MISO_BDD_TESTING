@@ -1,15 +1,14 @@
 //Complete siguiendo las instrucciones del taller
 var {defineSupportCode} = require('cucumber');
 var {expect} = require('chai');
-var {Page} = require('../page-object/page-object');
-let page = new Page();
-let element;
+// var {Page} = require('../page-object/page-object');
+// let page = new Page();
+// let element;
 
 defineSupportCode(({Given, When, Then}) => {
     
   Given('I go to losestudiantes home screen', () => {
     browser.url('/');//call baseurl
-    browser.waitForVisible('button=Cerrar', 3000);
     if(browser.isVisible('button=Cerrar')) {
       browser.click('button=Cerrar');
     }
@@ -58,10 +57,10 @@ defineSupportCode(({Given, When, Then}) => {
 
 
  // To Project version model
-    Given("I go to the website {string}", async (url) => {
-        page.goToUrl(url);
-        await page.pause(200);
-    });
+    // Given("I go to the website {string}", async (url) => {
+    //     page.goToUrl(url);
+    //     await page.pause(200);
+    // });
 
     // Given("I get element with class {string}", async (elementClass) => {
     //     element = await page.findByClass(elementClass);
