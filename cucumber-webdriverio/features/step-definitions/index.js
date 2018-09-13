@@ -55,7 +55,28 @@ defineSupportCode(({Given, When, Then}) => {
         expect(alertText).to.include(error);
   });
 
+  //I type <user> and <password>
+  When(/^I type (.*) and (.*)$/, (user, pass)=>{
+    var cajaLogIn = browser.element('.cajaLogIn');
+    var mailInput = cajaLogIn.element('input[name="correo"]');
+    mailInput.click();
+    mailInput.keys(user);
+    var passwordInput = cajaLogIn.element('input[name="password"]');
+    passwordInput.click();
+    passwordInput.keys(pass)
+  })
 
+  Then('I expect to see button profile', () => {
+    // browser.waitForVisible('.usrImage', 5000);
+
+    // var userButton = browser.element('dropDown.dropdown.btn-group');
+    // var action = userButton.element('button[id="cuenta"]');
+    // action.click();
+
+    // browser.waitForVisible('button[id=cuenta]', 5000);
+
+    browser.waitForVisible('dropDown.dropdown.btn-group', 5000);
+  });
  // To Project version model
     // Given("I go to the website {string}", async (url) => {
     //     page.goToUrl(url);

@@ -24,19 +24,11 @@ Scenario Outline: Login failed with wrong inputs (dataSets)
       | miso@gmail.com   |    1234  | Upss! El correo y        |
 
 #Login exitoso a site losestudiantes.co
-#     Scenario: Successfully Login to losestudiantes.co
-#         Given I go to the website "https://losestudiantes.co"
-#         And I get element with class "botonCerrar"
-# #--
-#         Given I go to the website "https://pymeadmincorp.com/app/#/login"
-#         And I get element with class "sign-in-button"
-#         And I click
-#         And I get element with class "botonIngresar"
-#         And I click
-#         And I get element with name "nombre"
-#         And I send text "Servio"
-#         And I get element with name "apellido"
-#         And I send text "Pantoja"
-#         When I get element with class "logInButton"
-#         And I click
-#         Then show error message with content "Ocurrió un error activando tu cuenta"
+#user: perez.pepito@uniandes.edu.co
+#pass: password1234
+Scenario: Successfully Login to losestudiantes.co
+    Given I go to losestudiantes home screen
+        When I open the login screen
+        And I type perez.pepito@uniandes.edu.co and password1234
+        And I try to login
+        Then I expect to see button profile
