@@ -8,6 +8,7 @@ Scenario Outline: SignUp failed with variuos inputs (dataSets)
   Given I go to losestudiantes home screen
     When I open the login screen
     And I create user with <name> and <lastname> and <email>
+    And I Select program
     And I try to signUp
     ##Then I expect to see error
     Then I expect to see <error>

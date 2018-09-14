@@ -63,7 +63,7 @@ defineSupportCode(({Given, When, Then}) => {
     mailInput.keys(user);
     var passwordInput = cajaLogIn.element('input[name="password"]');
     passwordInput.click();
-    passwordInput.keys(pass)
+    passwordInput.keys(pass);
   })
 
   Then('I expect to see button profile', () => {
@@ -93,6 +93,22 @@ defineSupportCode(({Given, When, Then}) => {
     var emailInput = cajaSignUp.element('input[name="correo"]');
     emailInput.click();
     emailInput.keys(email);
+    
+  })
+
+  Then('I Select program', ()=>{
+    var cajaSignUp = browser.element('.cajaSignUp');
+    // //Select program
+    var checkMaestria = cajaSignUp.element('input[type="checkbox"]');
+    checkMaestria.click();
+    // browser.waitForSelected('#option16', 500);
+    // var deptoSelect = cajaSignUp.element('select[name="idPrograma"]');
+    // deptoSelect.selectByIndex(16);
+    // browser.waitForSelected('select[name="idPrograma"]')
+    // // deptoSelect.selectByVisibleText("Maestría en Ingeniería de Software");
+    // //Accept
+    // var checkAceptar = cajaSignUp.element('input[name="acepta"]');
+    // checkAceptar.click();
   })
 
   When('I try to signUp', () => {
