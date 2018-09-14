@@ -77,36 +77,36 @@ defineSupportCode(({Given, When, Then}) => {
 
     browser.waitForVisible('dropDown.dropdown.btn-group', 5000);
   });
- // To Project version model
-    // Given("I go to the website {string}", async (url) => {
-    //     page.goToUrl(url);
-    //     await page.pause(200);
-    // });
+ 
+  //CREATE USER
+  When(/^I create user with (.*) and (.*) and (.*)$/, (name, lastname, email)=>{
+    var cajaSignUp = browser.element('.cajaSignUp');
+    //name
+    var nombreInput = cajaSignUp.element('input[name="nombre"]');
+    nombreInput.click();
+    nombreInput.keys(name);
+    //lastname
+    var lastnameInput = cajaSignUp.element('input[name="apellido"]');
+    lastnameInput.click();
+    lastnameInput.keys(lastname);
+    //email
+    var emailInput = cajaSignUp.element('input[name="correo"]');
+    emailInput.click();
+    emailInput.keys(email);
+  })
 
-    // Given("I get element with class {string}", async (elementClass) => {
-    //     element = await page.findByClass(elementClass);
-    //     await page.pause(200);
-    // });
+  When('I try to signUp', () => {
+    var cajaSignUp = browser.element('.cajaSignUp');
+    cajaSignUp.element('button=Registrarse').click()
+  });
 
-    // Given("I get element with name {string}", async (elementName) => {
-    //     element = await page.findByName(elementName);
-    //     await page.pause(200);
-    // });
-
-    // Given("I send text {string}", async (text) => {
-    //     await element.setValue(text);
-    //     await page.pause(200);
-    // });
-
-    // Given("I get element with id {string}", async (elementId) => {
-    //     element = await page.findById(elementId);
-    //     await page.pause(200);
-    // });
-
-    // Given("I click", async () => {
-    //     await element.click();
-    //     await page.pause(200);
-    // });
-
+  // Then('I expect to see error', () => {
+  //   // var cajaSignUp = browser.element('.cajaSignUp');
+  //   // cajaSignUp.waitForVisible('.aviso.alert.alert-danger', 5000)
+  //   browser.waitForVisible('.aviso.alert.alert-danger', 5000);
+  //   //var alertText = browser.element('.aviso.alert.alert-danger').getText();
+  //   //let err = 'Ingresa tu correo'
+  //   // expect(alertText).to.include(error);
+  // });
 
 });
