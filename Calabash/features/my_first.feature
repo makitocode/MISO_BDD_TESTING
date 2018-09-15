@@ -9,14 +9,14 @@ Feature: Opening the help screen
     Then I should see "Calcular ruta con horario"
 
 
-  Scenario: Ver los puntos de recarga
+  Scenario: Puntos de recarga
     Given I wait to see "Inicio"
     And I click on screen 80% from the left and 90% from the top
     When I press "RECARGA"
     Then I should see ".Naranj@"
 
 
- Scenario: Como usuario deseo ver rutas complementarias
+ Scenario: Rutas complementarias
         Given I press "Rutas"
         When I press "COMPLEMENTARIO"
         Then I should see "Colina"
