@@ -11,9 +11,9 @@ Scenario Outline: SignUp failed with variuos inputs (dataSets)
     And I Select program
     And I try to signUp
     ##Then I expect to see error
-    Then I expect to see <error>
+    Then I expect to read <error>
 
     Examples:
       | email                           | name     | lastname             | error             |
       |                                 |          |                      | Ingresa tu correo |
-      ##| perez.pepito@uniandes.edu.co    | pepito   | perez                
+      ##| perez.pepito@uniandes.edu.co    | pepito   | perez                | Registro exitoso

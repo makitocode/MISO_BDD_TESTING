@@ -93,22 +93,25 @@ defineSupportCode(({Given, When, Then}) => {
     var emailInput = cajaSignUp.element('input[name="correo"]');
     emailInput.click();
     emailInput.keys(email);
+    //password
+    var pass = cajaSignUp.element('input[name="password"]');
+    pass.click();
+    pass.keys('abcd1234');
     
   })
 
   Then('I Select program', ()=>{
     var cajaSignUp = browser.element('.cajaSignUp');
-    // //Select program
-    var checkMaestria = cajaSignUp.element('input[type="checkbox"]');
+    //Select program
+    var checkMaestria = browser.element('label=Estudio una maestria');
     checkMaestria.click();
-    // browser.waitForSelected('#option16', 500);
-    // var deptoSelect = cajaSignUp.element('select[name="idPrograma"]');
-    // deptoSelect.selectByIndex(16);
-    // browser.waitForSelected('select[name="idPrograma"]')
-    // // deptoSelect.selectByVisibleText("Maestría en Ingeniería de Software");
-    // //Accept
-    // var checkAceptar = cajaSignUp.element('input[name="acepta"]');
-    // checkAceptar.click();
+    var deptoSelect = cajaSignUp.element('select[name="idPrograma"]');
+    deptoSelect.selectByIndex(16);
+    // var vprograma = cajaLogIn.element('select[name="idPrograma"]');
+
+    //Acept
+    var checkAceptar = cajaSignUp.element('input[name="acepta"]');
+    checkAceptar.click();
   })
 
   When('I try to signUp', () => {
@@ -116,13 +119,22 @@ defineSupportCode(({Given, When, Then}) => {
     cajaSignUp.element('button=Registrarse').click()
   });
 
-  // Then('I expect to see error', () => {
-  //   // var cajaSignUp = browser.element('.cajaSignUp');
-  //   // cajaSignUp.waitForVisible('.aviso.alert.alert-danger', 5000)
-  //   browser.waitForVisible('.aviso.alert.alert-danger', 5000);
-  //   //var alertText = browser.element('.aviso.alert.alert-danger').getText();
-  //   //let err = 'Ingresa tu correo'
-  //   // expect(alertText).to.include(error);
-  // });
+  Then('I expect to read {string}', mensaje => {
+		var msgRegistered=true;
+    try{
+      browser.waitForVisible('.sweet-alert', 2000);
+    }
+    catch(ex){
+      msgRegistered=false;
+    }
+    var alertText = "";		
+    if (msgRegistered){
+      alertText = browser.element('.sweet-alert').getText();
+    }	
+    else{
+      alertText = browser.element('.cajaSignUp').getText();
+    }
+	  expect(alertText).to.include(mensaje);
+	});
 
 });
