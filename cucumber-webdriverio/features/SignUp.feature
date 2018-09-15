@@ -17,3 +17,4 @@ Scenario Outline: SignUp failed with variuos inputs (dataSets)
       | email                           | name     | lastname             | error             |
       |                                 |          |                      | Ingresa tu correo |
       | perez.pepito@uniandes.edu.co    | pepito   | perez                | Ocurrió un error activando tu cuenta  |
+      | perez.pepito2@uniandes.edu.co   | pepito   | perez                | Registro exitoso  |
